@@ -21552,13 +21552,18 @@
             ]
         }
     ],
-    "SIMPLE_NETWORK": {
-        "BOOTSTRAP_HOST": "192.168.43.189",
-        "BOOTSTRAP_PORT": 38291
+    "P2P": {
+        "IP": "10.107.8.60",
+        "DISCOVERY_PORT": 29000,
+        "BOOTSTRAP_HOST": "10.107.8.60",
+        "BOOTSTRAP_PORT": 29000,
+        "MIN_PEERS": 2,
+        "MAX_PEERS": 10,
+        "ADDITIONAL_BOOTSTRAPS": ""
     },
     "MONITORING": {
         "NETWORK_NAME": "",
-        "CLUSTER_ID": "192.168.43.189",
+        "CLUSTER_ID": "10.107.8.60",
         "KAFKA_REST_ADDRESS": "",
         "MINER_TOPIC": "qkc_miner",
         "PROPAGATION_TOPIC": "block_propagation",
