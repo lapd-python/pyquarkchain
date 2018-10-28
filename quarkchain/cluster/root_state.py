@@ -304,12 +304,7 @@ class RootState:
                         m_header.branch.get_shard_id(), m_header.height
                     )
                 )
-            if m_header.create_time > block.header.create_time:
-                raise ValueError(
-                    "minor block create time is larger than root block {} > {}".format(
-                        m_header.create_time, block.header.create_time
-                    )
-                )
+
             if not self.__is_same_chain(
                 self.db.get_root_block_header_by_hash(block.header.hash_prev_block),
                 self.db.get_root_block_header_by_hash(m_header.hash_prev_root_block),

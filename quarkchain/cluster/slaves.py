@@ -86,7 +86,6 @@ class Cluster:
             self.procs.append((prefix, s))
 
     async def run(self):
-        await self.run_master()
         await self.run_slaves()
 
         await asyncio.gather(

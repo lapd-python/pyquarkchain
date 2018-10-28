@@ -290,17 +290,9 @@ class P2PNetwork:
             Logger.info(
                 "Connecting to peers from devp2p discovery: {}".format(to_be_connected)
             )
-        self_ip_port = "{}:{}".format(self.ip, self.port)
         for ip_port in to_be_connected:
-            if self_ip_port < ip_port:
-                ip, port = ip_port.split(":")
-                asyncio.ensure_future(self.connect(ip, port))
-            else:
-                Logger.info(
-                    "skipping {} to prevent concurrent peer initialization".format(
-                        ip_port
-                    )
-                )
+            ip, port = ip_port.split(":")
+            asyncio.ensure_future(self.connect(ip, port))
 
     async def connect(self, ip, port):
         Logger.info("connecting {} {}".format(ip, port))

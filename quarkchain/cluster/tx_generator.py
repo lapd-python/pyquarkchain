@@ -56,22 +56,25 @@ class TransactionGenerator:
         tx_list = []
         total = 0
         sample_evm_tx = sample_tx.code.get_evm_transaction()
-        for account in self.accounts:
-            nonce = self.shard.state.get_transaction_count(account.address.recipient)
-            tx = self.create_transaction(account, nonce, x_shard_percent, sample_evm_tx)
-            if not tx:
-                continue
-            tx_list.append(tx)
-            total += 1
-            if len(tx_list) >= 600 or total >= num_tx:
-                self.shard.add_tx_list(tx_list)
-                tx_list = []
-                await asyncio.sleep(
-                    random.uniform(8, 12)
-                )  # yield CPU so that other stuff won't be held for too long
+        while True:
+            for account in self.accounts:
+                nonce = self.shard.state.get_transaction_count(account.address.recipient)
+                tx = self.create_transaction(account, nonce, x_shard_percent, sample_evm_tx)
+                if not tx:
+                    continue
+                tx_list.append(tx)
+                total += 1
+                if len(tx_list) >= 600 or total >= num_tx:
+                    self.shard.add_tx_list(tx_list)
+                    tx_list = []
+                    await asyncio.sleep(
+                        random.uniform(8, 12)
+                    )  # yield CPU so that other stuff won't be held for too long
 
-            if total >= num_tx:
-                break
+                if total >= num_tx:
+                    break
+            if  total >= num_tx:
+                    break
 
         end_time = time.time()
         Logger.info(

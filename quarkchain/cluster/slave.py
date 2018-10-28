@@ -141,7 +141,9 @@ class MasterConnection(ClusterConnection):
             for peer_shard_conn in shard.peers.values():
                 peer_shard_conn.get_forwarding_connection().close()
 
-        Logger.info("Lost connection with master")
+        Logger.info("Lost connection with master.Shutting down slaves ...")
+        self.slave_server.shutdown()
+
         return super().close()
 
     def close_with_error(self, error):
