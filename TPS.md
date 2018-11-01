@@ -39,10 +39,16 @@ the directory result containts the result.
 
 **Peak TPS**
 
-the highest TPS: 55039.58
+EC2 cluster: the highest TPS: 55039.58
 
 **Video URL**
 
+EC2 cluster: the highest TPS: 55039.58, the video URL is 
+https://v.qq.com/x/page/z0776irn540.html
+
+
+another test by using 26 nodes (24 CPU, 64G RAM) to compose a cluster, the highest TPS is 23144.05, the video URL is 
+https://v.qq.com/x/page/c077096akev.html
 
 
 **Output From `stats` Tool**
